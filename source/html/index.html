@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
+    <title>Demo angular-lov-directive</title>
+
+    <link href="../css/bootstrap.css" rel="stylesheet">
+
+</head>
+<body ng-app="demoApp" ng-controller="IndexCtrl">
+
+    <div class="jumbotron">
+        <h1>Employees</h1>
+    </div>
+
+    <form action="/" class="form-inline">
+
+        <div class="form-group">
+            <label for="id" class="control-label">Employee Id</label>
+
+            <input type="text"
+                   name="id"
+                   ng-model="SelectedEmployee.employeeNumber"
+                   value=" "
+                   class="form-control"
+                   readonly />
+        </div>
+        <div class="form-group">
+            <div lov
+                 model="lovModel"
+                 title="lovTitle"
+                 callback="lovCallBack(e)"
+                 columnlist="lovColumnList"
+                 fieldlist="lovFieldList"
+                 ng-show="lovModel != null">
+            </div>
+
+        </div>
+    </form>
+    </br>
+    <div class="alert alert-success" ng-show="SelectedEmployee != null">
+        You choose: {{SelectedEmployee}}
+    </div>
+
+    <script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.js"></script>
+    <script type="text/javascript" src="../js/angular.js"></script>
+    <script type="text/javascript" src="../js/ui-bootstrap-tpls-0.11.0.min.js"></script>
+
+    <script type="text/javascript" src="../js/app.js"></script>
+
+    <script type="text/javascript" src="../controller/IndexCtrl.js"></script>
+
+    <script type="text/javascript" src="../directive/LovDir.js"></script>
+
+</body>
+</html>

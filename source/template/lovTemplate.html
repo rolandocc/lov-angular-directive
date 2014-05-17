@@ -1,0 +1,60 @@
+﻿<div class="modal-header">
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="text-primary">
+                <h3>
+                    {{Title}}
+                </h3>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <button type="button" class="close" ng-click="CloseLov()" aria-hidden="true">&times;</button>
+        </div>
+    </div>
+</div>
+<div class="modal-body" style="height:380px">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <input type="text"
+                   autocomplete="off"
+                   id="txtFilter"
+                   ng-model="txtFilter"
+                   class="form-control input-lg" autofocus />
+        </div>
+    </div>
+    <p></p>
+    <table class="table table-hover table-striped">
+        <tr>
+            <th ng-repeat="c in ColumnList">{{c}}</th>
+            <th></th>
+        </tr>
+
+        <tr ng-repeat="x in Model | filter: txtFilter   | StartOnPage: CurrentPage*PageSize | limitTo:PageSize">
+            <td ng-repeat="c in FieldList">
+                {{x[c]}}
+            </td>
+            <td>
+                <div class="btn btn-primary" ng-click="ChooseItem(x)">Choose</div>
+            </td>
+        </tr>
+    </table>
+
+
+</div>
+<div class="modal-footer">
+
+    <ul class="pagination">
+        <li ng-class="{disabled: CurrentPage == 0}">
+            <a href ng-click="PrevPage()">« Prev</a>
+        </li>
+        <li><a href>Current Page {{CurrentPage+1}}</a></li>
+        <li><a href>/</a></li>
+        <li><a href>Total Pages {{TotalPages()}}</a></li>
+        <li ng-class="{disabled: CurrentPage+1 == TotalPages()}">
+            <a href ng-click="NextPage()">Next »</a>
+        </li>
+    </ul>
+
+</div>
