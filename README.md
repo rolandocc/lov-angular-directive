@@ -1,2 +1,2 @@
-lov-blues
+Generic List Of Values (LOV) Angular Directive
 =========
